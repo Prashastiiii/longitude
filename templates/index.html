@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geocoding App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        height: 100%; /* Ensure body covers the whole viewport */
+        margin: 0; /* Remove default margin */
+        font-family: "Arial", sans-serif;
+        background-image: url("static/1 - Copy.jpg"); /* Replace with your background image URL */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .container {
+        max-width: 400px;
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.85
+        ); /* Semi-transparent background */
+        padding: 20px;
+        border-radius: 15px; /* Rounded corners */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+        position: absolute; /* To position it on the left */
+        left: 10%; /* Position near the left */
+        margin-top: 300px;
+        transform: translateY(-50%); /* Perfect vertical centering */
+      }
+
+      input,
+      .result-box {
+        padding: 12px;
+        border-radius: 7px;
+        border: 1px solid #ccc;
+      }
+
+      button {
+        background-color: #2563eb; /* Custom blue */
+        padding: 12px 20px;
+        width: 100%;
+        border-radius: 10px;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #1d4ed8; /* Darker blue on hover */
+      }
+
+      .result-box {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: #f3f4f6; /* Light gray background */
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Small shadow */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-3xl font-extrabold mb-6 text-center text-gray-800">
+        Geocoding App
+      </h1>
+      <form method="post" class="space-y-6">
+        <div>
+          <label for="location" class="block text-lg font-medium text-gray-700">
+            Enter a location:
+          </label>
+          <input
+            type="text"
+            id="location"
+            name="location"
+            required
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-150 ease-in-out"
+        >
+          Get Coordinates
+        </button>
+      </form>
+      {% if latitude is not none %}
+      <div class="result-box mt-8">
+        <h2 class="text-2xl font-semibold mb-4 text-gray-800">Results:</h2>
+        <p class="text-lg text-gray-700">
+          Latitude:
+          <span class="font-medium text-blue-600">{{ latitude }}</span>
+        </p>
+        <p class="text-lg text-gray-700">
+          Longitude:
+          <span class="font-medium text-blue-600">{{ longitude }}</span>
+        </p>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
